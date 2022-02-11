@@ -11,6 +11,8 @@ import {
   SunIcon,
   MoonIcon
 } from '@chakra-ui/icons';
+import useStateWithLocalStorage from "../hooks/use-state-with-local-storage";
+import React, { ChangeEvent } from "react";
 
 const Main = () => {
 
@@ -24,6 +26,8 @@ const Main = () => {
     toggleColorMode
   }: UseColorModeProps = useColorMode();
 
+  const [notes, setNotes] = useStateWithLocalStorage('notes');
+
   return (
     <Container maxW={ 'container.xl' } py={ 4 }>
       <Flex align={ 'center' } justify={ 'center' } mb={ 4 }>
@@ -35,7 +39,12 @@ const Main = () => {
           icon={ colorMode === 'light' ? <MoonIcon /> : <SunIcon /> }
         />
       </Flex>
-      <Textarea size={ 'lg' }/>
+      <Textarea
+        variant={ 'filled' }
+        size={ 'lg' }
+        value={ notes }
+        onChange={ (e: React.ChangeEvent<HTMLTextAreaElement>) => setNotes(e.target.value) }
+      />
     </Container>
   );
 };
