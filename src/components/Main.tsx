@@ -9,7 +9,8 @@ import {
   Spacer,
   useColorMode,
   useDisclosure,
-  useClipboard
+  useClipboard,
+  useToast
 } from "@chakra-ui/react";
 import {
   SunIcon,
@@ -22,6 +23,8 @@ import DeleteConfirmationModal from "./DeleteConfirmationModal";
 
 const Main = () => {
 
+  const [notes, setNotes] = useStateWithLocalStorage('notes');
+
   const { colorMode, toggleColorMode } = useColorMode();
 
   const {
@@ -30,34 +33,58 @@ const Main = () => {
     onClose: onDeleteConfirmationModalClose
   } = useDisclosure();
 
-  const [notes, setNotes] = useStateWithLocalStorage('notes');
-
   const { onCopy } = useClipboard(notes);
+
+  const toast = useToast();
+
+  const handleCopyLink: React.MouseEventHandler<HTMLButtonElement> = () => {
+    if (notes) {
+      onCopy();
+      toast({
+        title: 'notes copied to clipboard!',
+        status: 'success',
+        duration: 5000,
+        isClosable: false
+      });
+    }
+  };
 
   const handleNotesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setNotes(e.target.value)
   };
 
+  const handleDeleteButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
+    if (notes) {
+      onDeleteConfirmationModalOpen();
+    }
+  };
+
   const handleDeleteNotes: React.MouseEventHandler<HTMLButtonElement> = () => {
     setNotes('');
     onDeleteConfirmationModalClose();
+    toast({
+      title: 'notes deleted!',
+      status: 'success',
+      duration: 5000,
+      isClosable: false
+    });
   };
 
   return (
     <>
       <Container maxW={ 'container.xl' } py={ 4 }>
         <Flex align={ 'center' } justify={ 'center' } mb={ 4 }>
-          <Heading>{ 'local-storage-notes' }</Heading>
+          <Heading>{ 'notes-js' }</Heading>
           <Spacer />
           <HStack>
             <IconButton
               aria-label={ 'copy-notes' }
-              onClick={ onCopy }
+              onClick={ handleCopyLink }
               icon={ <CopyIcon /> }
             />
             <IconButton
-              aria-label={ 'clear-notes' }
-              onClick={ onDeleteConfirmationModalOpen }
+              aria-label={ 'delete-notes' }
+              onClick={ handleDeleteButtonClick }
               icon={ <DeleteIcon /> }
             />
             <IconButton
