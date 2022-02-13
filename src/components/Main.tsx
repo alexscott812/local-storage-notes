@@ -8,36 +8,31 @@ import {
   IconButton,
   Spacer,
   useColorMode,
-  UseDisclosureProps,
-  useDisclosure
+  useDisclosure,
+  useClipboard
 } from "@chakra-ui/react";
 import {
   SunIcon,
   MoonIcon,
-  DeleteIcon
+  DeleteIcon,
+  CopyIcon
 } from '@chakra-ui/icons';
 import useStateWithLocalStorage from "../hooks/use-state-with-local-storage";
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
 
 const Main = () => {
 
-  type UseColorModeProps = {
-    colorMode: 'light' | 'dark';
-    toggleColorMode: () => void;
-  };
-
-  const {
-    colorMode,
-    toggleColorMode
-  }: UseColorModeProps = useColorMode();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const {
     isOpen: isDeleteConfirmationModalOpen,
     onOpen: onDeleteConfirmationModalOpen,
     onClose: onDeleteConfirmationModalClose
-  }: UseDisclosureProps = useDisclosure();
+  } = useDisclosure();
 
   const [notes, setNotes] = useStateWithLocalStorage('notes');
+
+  const { onCopy } = useClipboard(notes);
 
   const handleDeleteNotes: React.MouseEventHandler<HTMLButtonElement> = () => {
     setNotes('');
@@ -51,6 +46,11 @@ const Main = () => {
           <Heading>{ 'local-storage-notes' }</Heading>
           <Spacer />
           <HStack>
+            <IconButton
+              aria-label={ 'copy-notes' }
+              onClick={ onCopy }
+              icon={ <CopyIcon /> }
+            />
             <IconButton
               aria-label={ 'clear-notes' }
               onClick={ onDeleteConfirmationModalOpen }
