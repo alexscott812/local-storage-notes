@@ -6,8 +6,7 @@ import {
   AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
-  Button,
-  AlertDialogProps
+  Button
 } from '@chakra-ui/react';
 
 interface DeleteConfirmationModalProps {
@@ -36,7 +35,7 @@ const DeleteConfirmationModal = ({
             { 'delete notes' }
           </AlertDialogHeader>
           <AlertDialogBody>
-            { `are you sure? you can't undo this action afterwards.` }
+            { 'are you sure you want to delete all of your notes?' }
           </AlertDialogBody>
           <AlertDialogFooter>
             <Button ref={ cancelRef } onClick={ onClose }>
