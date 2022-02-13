@@ -7,10 +7,12 @@ import {
   Flex,
   IconButton,
   Spacer,
+  Tooltip,
   useColorMode,
   useDisclosure,
   useClipboard,
-  useToast
+  useToast,
+  useColorModeValue
 } from "@chakra-ui/react";
 import {
   SunIcon,
@@ -25,7 +27,7 @@ const Main = () => {
 
   const [notes, setNotes] = useStateWithLocalStorage('notes');
 
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { toggleColorMode } = useColorMode();
 
   const {
     isOpen: isDeleteConfirmationModalOpen,
@@ -43,7 +45,14 @@ const Main = () => {
       toast({
         title: 'notes copied to clipboard!',
         status: 'success',
-        duration: 5000,
+        duration: 2500,
+        isClosable: false
+      });
+    } else {
+      toast({
+        title: 'no notes to copy!',
+        status: 'warning',
+        duration: 2500,
         isClosable: false
       });
     }
@@ -56,6 +65,13 @@ const Main = () => {
   const handleDeleteButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     if (notes) {
       onDeleteConfirmationModalOpen();
+    } else {
+      toast({
+        title: 'no notes to delete!',
+        status: 'warning',
+        duration: 2500,
+        isClosable: false
+      });
     }
   };
 
@@ -65,7 +81,7 @@ const Main = () => {
     toast({
       title: 'notes deleted!',
       status: 'success',
-      duration: 5000,
+      duration: 2500,
       isClosable: false
     });
   };
@@ -77,21 +93,27 @@ const Main = () => {
           <Heading>{ 'notes-js' }</Heading>
           <Spacer />
           <HStack>
-            <IconButton
-              aria-label={ 'copy-notes' }
-              onClick={ handleCopyLink }
-              icon={ <CopyIcon /> }
-            />
-            <IconButton
-              aria-label={ 'delete-notes' }
-              onClick={ handleDeleteButtonClick }
-              icon={ <DeleteIcon /> }
-            />
-            <IconButton
-              aria-label={ 'toggle-color-mode' }
-              onClick={ toggleColorMode }
-              icon={ colorMode === 'light' ? <MoonIcon /> : <SunIcon /> }
-            />
+            <Tooltip label={ 'copy notes' }>
+              <IconButton
+                aria-label={ 'copy-notes' }
+                onClick={ handleCopyLink }
+                icon={ <CopyIcon /> }
+              />
+            </Tooltip>
+            <Tooltip label={ 'delete notes' }>
+              <IconButton
+                aria-label={ 'delete-notes' }
+                onClick={ handleDeleteButtonClick }
+                icon={ <DeleteIcon /> }
+              />
+            </Tooltip>
+            <Tooltip label={ `${useColorModeValue('dark', 'light')} mode` }>
+              <IconButton
+                aria-label={ 'toggle-color-mode' }
+                onClick={ toggleColorMode }
+                icon={ useColorModeValue(<MoonIcon />, <SunIcon />) }
+              />
+            </Tooltip>
           </HStack>
         </Flex>
         <Textarea
