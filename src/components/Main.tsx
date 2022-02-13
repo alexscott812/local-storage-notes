@@ -34,6 +34,10 @@ const Main = () => {
 
   const { onCopy } = useClipboard(notes);
 
+  const handleNotesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNotes(e.target.value)
+  };
+
   const handleDeleteNotes: React.MouseEventHandler<HTMLButtonElement> = () => {
     setNotes('');
     onDeleteConfirmationModalClose();
@@ -68,7 +72,7 @@ const Main = () => {
           size={ 'lg' }
           minH={ 'lg' }
           value={ notes }
-          onChange={ (e: React.ChangeEvent<HTMLTextAreaElement>) => setNotes(e.target.value) }
+          onChange={ handleNotesChange }
           placeholder={ 'type your notes here!' }
         />
       </Container>
