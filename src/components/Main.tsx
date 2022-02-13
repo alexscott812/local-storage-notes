@@ -1,3 +1,4 @@
+import React from "react";
 import {
   HStack,
   Heading,
@@ -6,7 +7,9 @@ import {
   Flex,
   IconButton,
   Spacer,
-  useColorMode
+  useColorMode,
+  UseDisclosureProps,
+  useDisclosure
 } from "@chakra-ui/react";
 import {
   SunIcon,
@@ -14,7 +17,7 @@ import {
   DeleteIcon
 } from '@chakra-ui/icons';
 import useStateWithLocalStorage from "../hooks/use-state-with-local-storage";
-import React from "react";
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
 
 const Main = () => {
 
@@ -28,35 +31,53 @@ const Main = () => {
     toggleColorMode
   }: UseColorModeProps = useColorMode();
 
+  const {
+    isOpen: isDeleteConfirmationModalOpen,
+    onOpen: onDeleteConfirmationModalOpen,
+    onClose: onDeleteConfirmationModalClose
+  }: UseDisclosureProps = useDisclosure();
+
   const [notes, setNotes] = useStateWithLocalStorage('notes');
 
+  const handleDeleteNotes: React.MouseEventHandler<HTMLButtonElement> = () => {
+    setNotes('');
+    onDeleteConfirmationModalClose();
+  };
+
   return (
-    <Container maxW={ 'container.xl' } py={ 4 }>
-      <Flex align={ 'center' } justify={ 'center' } mb={ 4 }>
-        <Heading>{ 'local-storage-notes' }</Heading>
-        <Spacer />
-        <HStack>
-          <IconButton
-            aria-label={ 'clear-notes' }
-            onClick={ () => setNotes('') }
-            icon={ <DeleteIcon /> }
-          />
-          <IconButton
-            aria-label={ 'toggle-color-mode' }
-            onClick={ toggleColorMode }
-            icon={ colorMode === 'light' ? <MoonIcon /> : <SunIcon /> }
-          />
-        </HStack>
-      </Flex>
-      <Textarea
-        variant={ 'filled' }
-        size={ 'lg' }
-        minH={ 'lg' }
-        value={ notes }
-        onChange={ (e: React.ChangeEvent<HTMLTextAreaElement>) => setNotes(e.target.value) }
-        placeholder={ 'type your notes here!' }
+    <>
+      <Container maxW={ 'container.xl' } py={ 4 }>
+        <Flex align={ 'center' } justify={ 'center' } mb={ 4 }>
+          <Heading>{ 'local-storage-notes' }</Heading>
+          <Spacer />
+          <HStack>
+            <IconButton
+              aria-label={ 'clear-notes' }
+              onClick={ onDeleteConfirmationModalOpen }
+              icon={ <DeleteIcon /> }
+            />
+            <IconButton
+              aria-label={ 'toggle-color-mode' }
+              onClick={ toggleColorMode }
+              icon={ colorMode === 'light' ? <MoonIcon /> : <SunIcon /> }
+            />
+          </HStack>
+        </Flex>
+        <Textarea
+          variant={ 'filled' }
+          size={ 'lg' }
+          minH={ 'lg' }
+          value={ notes }
+          onChange={ (e: React.ChangeEvent<HTMLTextAreaElement>) => setNotes(e.target.value) }
+          placeholder={ 'type your notes here!' }
+        />
+      </Container>
+      <DeleteConfirmationModal
+        isOpen={ isDeleteConfirmationModalOpen }
+        onClose={ onDeleteConfirmationModalClose }
+        confirmDelete={ handleDeleteNotes }
       />
-    </Container>
+    </>
   );
 };
 
