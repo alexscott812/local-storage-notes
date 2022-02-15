@@ -1,26 +1,12 @@
-import React, { MouseEventHandler, useContext } from "react";
+import React from "react";
 import {
-  HStack,
-  Heading,
   Container,
   Textarea,
-  Flex,
-  IconButton,
-  Spacer,
-  Tooltip,
   useColorMode,
   useDisclosure,
   useClipboard,
-  useToast,
-  useColorModeValue
+  useToast
 } from "@chakra-ui/react";
-import {
-  SunIcon,
-  MoonIcon,
-  DeleteIcon,
-  CopyIcon,
-  DownloadIcon
-} from '@chakra-ui/icons';
 import useStateWithLocalStorage from "../hooks/use-state-with-local-storage";
 import useDownloadTxt from "../hooks/use-download-txt";
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
