@@ -1,4 +1,10 @@
-import { CopyIcon, DownloadIcon, DeleteIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import {
+  CopyIcon,
+  DownloadIcon,
+  DeleteIcon,
+  MoonIcon,
+  SunIcon
+} from "@chakra-ui/icons";
 import {
   Flex,
   Heading,
