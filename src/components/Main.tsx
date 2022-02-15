@@ -24,6 +24,7 @@ import {
 import useStateWithLocalStorage from "../hooks/use-state-with-local-storage";
 import useDownloadTxt from "../hooks/use-download-txt";
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
+import Header from "./Header";
 
 const Main = () => {
 
@@ -107,40 +108,12 @@ const Main = () => {
   return (
     <>
       <Container maxW={ 'container.xl' } py={ 4 }>
-        <Flex align={ 'center' } justify={ 'center' } mb={ 4 }>
-          <Heading>{ 'notes-js' }</Heading>
-          <Spacer />
-          <HStack>
-            <Tooltip hasArrow label={ 'copy notes' }>
-              <IconButton
-                aria-label={ 'copy-notes' }
-                onClick={ handleCopyNotes }
-                icon={ <CopyIcon /> }
-              />
-            </Tooltip>
-            <Tooltip hasArrow label={ 'download notes' }>
-              <IconButton
-                aria-label={ 'download-notes' }
-                onClick={ handleDownloadNotes }
-                icon={ <DownloadIcon /> }
-              />
-            </Tooltip>
-            <Tooltip hasArrow label={ 'delete notes' }>
-              <IconButton
-                aria-label={ 'delete-notes' }
-                onClick={ handleDeleteButtonClick }
-                icon={ <DeleteIcon /> }
-              />
-            </Tooltip>
-            <Tooltip hasArrow label={ `${useColorModeValue('dark', 'light')} mode` }>
-              <IconButton
-                aria-label={ 'toggle-color-mode' }
-                onClick={ toggleColorMode }
-                icon={ useColorModeValue(<MoonIcon />, <SunIcon />) }
-              />
-            </Tooltip>
-          </HStack>
-        </Flex>
+        <Header 
+          handleCopyNotes={ handleCopyNotes }
+          handleDownloadNotes={ handleDownloadNotes }
+          handleDeleteButtonClick={ handleDeleteButtonClick }
+          toggleColorMode={ toggleColorMode }
+        />
         <Textarea
           variant={ 'filled' }
           size={ 'lg' }
