@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler, useContext } from "react";
 import {
   HStack,
   Heading,
@@ -18,42 +18,60 @@ import {
   SunIcon,
   MoonIcon,
   DeleteIcon,
-  CopyIcon
+  CopyIcon,
+  DownloadIcon
 } from '@chakra-ui/icons';
 import useStateWithLocalStorage from "../hooks/use-state-with-local-storage";
+import useDownloadTxt from "../hooks/use-download-txt";
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
 
 const Main = () => {
 
   const [notes, setNotes] = useStateWithLocalStorage('notes');
-
   const { toggleColorMode } = useColorMode();
-
   const {
     isOpen: isDeleteConfirmationModalOpen,
     onOpen: onDeleteConfirmationModalOpen,
     onClose: onDeleteConfirmationModalClose
   } = useDisclosure();
+  const { onCopy: onCopyNotes } = useClipboard(notes);
+  const { onDownload: onDownloadNotes } = useDownloadTxt(notes);
+  const createToast = useToast();
 
-  const { onCopy } = useClipboard(notes);
-
-  const toast = useToast();
-
-  const handleCopyLink: React.MouseEventHandler<HTMLButtonElement> = () => {
+  const handleCopyNotes: React.MouseEventHandler<HTMLButtonElement> = () => {
     if (notes) {
-      onCopy();
-      toast({
+      onCopyNotes();
+      createToast({
         title: 'notes copied to clipboard!',
         status: 'success',
         duration: 2500,
-        isClosable: false
+        isClosable: true
       });
     } else {
-      toast({
+      createToast({
         title: 'no notes to copy!',
         status: 'warning',
         duration: 2500,
-        isClosable: false
+        isClosable: true
+      });
+    }
+  };
+
+  const handleDownloadNotes: React.MouseEventHandler<HTMLButtonElement> = () => {
+    if (notes) {
+      onDownloadNotes();
+      createToast({
+        title: 'notes downloaded!',
+        status: 'success',
+        duration: 2500,
+        isClosable: true
+      });
+    } else {
+      createToast({
+        title: 'no notes to download!',
+        status: 'warning',
+        duration: 2500,
+        isClosable: true
       });
     }
   };
@@ -66,11 +84,11 @@ const Main = () => {
     if (notes) {
       onDeleteConfirmationModalOpen();
     } else {
-      toast({
+      createToast({
         title: 'no notes to delete!',
         status: 'warning',
         duration: 2500,
-        isClosable: false
+        isClosable: true
       });
     }
   };
@@ -78,11 +96,11 @@ const Main = () => {
   const handleDeleteNotes: React.MouseEventHandler<HTMLButtonElement> = () => {
     setNotes('');
     onDeleteConfirmationModalClose();
-    toast({
+    createToast({
       title: 'notes deleted!',
       status: 'success',
       duration: 2500,
-      isClosable: false
+      isClosable: true
     });
   };
 
@@ -93,21 +111,28 @@ const Main = () => {
           <Heading>{ 'notes-js' }</Heading>
           <Spacer />
           <HStack>
-            <Tooltip label={ 'copy notes' }>
+            <Tooltip hasArrow label={ 'copy notes' }>
               <IconButton
                 aria-label={ 'copy-notes' }
-                onClick={ handleCopyLink }
+                onClick={ handleCopyNotes }
                 icon={ <CopyIcon /> }
               />
             </Tooltip>
-            <Tooltip label={ 'delete notes' }>
+            <Tooltip hasArrow label={ 'download notes' }>
+              <IconButton
+                aria-label={ 'download-notes' }
+                onClick={ handleDownloadNotes }
+                icon={ <DownloadIcon /> }
+              />
+            </Tooltip>
+            <Tooltip hasArrow label={ 'delete notes' }>
               <IconButton
                 aria-label={ 'delete-notes' }
                 onClick={ handleDeleteButtonClick }
                 icon={ <DeleteIcon /> }
               />
             </Tooltip>
-            <Tooltip label={ `${useColorModeValue('dark', 'light')} mode` }>
+            <Tooltip hasArrow label={ `${useColorModeValue('dark', 'light')} mode` }>
               <IconButton
                 aria-label={ 'toggle-color-mode' }
                 onClick={ toggleColorMode }
@@ -122,7 +147,7 @@ const Main = () => {
           minH={ 'lg' }
           value={ notes }
           onChange={ handleNotesChange }
-          placeholder={ 'type your notes here!' }
+          placeholder={ 'type your notes here...' }
         />
       </Container>
       <DeleteConfirmationModal
