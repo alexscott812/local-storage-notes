@@ -93,7 +93,7 @@ const Main = () => {
           handleCopyButtonClick={ handleCopyButtonClick }
           handleDownloadButtonClick={ handleDownloadButtonClick }
           handleDeleteButtonClick={ handleDeleteButtonClick }
-          toggleColorMode={ toggleColorMode }
+          handleColorModeButtonClick={ toggleColorMode }
         />
         <Textarea
           variant={ 'filled' }

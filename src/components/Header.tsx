@@ -26,7 +26,7 @@ interface HeaderProps {
   handleCopyButtonClick: React.MouseEventHandler<HTMLButtonElement>;
   handleDownloadButtonClick: React.MouseEventHandler<HTMLButtonElement>;
   handleDeleteButtonClick: React.MouseEventHandler<HTMLButtonElement>;
-  toggleColorMode: () => void;
+  handleColorModeButtonClick: () => void;
 }
 
 const Header = ({
@@ -34,7 +34,7 @@ const Header = ({
   handleCopyButtonClick,
   handleDownloadButtonClick,
   handleDeleteButtonClick,
-  toggleColorMode
+  handleColorModeButtonClick
 }: HeaderProps) => {
   return (
     <Flex align={ 'center' } justify={ 'center' } mb={ 4 }>
@@ -68,7 +68,7 @@ const Header = ({
             </MenuItem>
             <MenuItem
               icon={ useColorModeValue(<MoonIcon />, <SunIcon />) }
-              onClick={ toggleColorMode }
+              onClick={ handleColorModeButtonClick }
             >
               { `${useColorModeValue('dark', 'light')} mode` }
             </MenuItem>
@@ -103,7 +103,7 @@ const Header = ({
         <Tooltip hasArrow label={ `${useColorModeValue('dark', 'light')} mode` }>
           <IconButton
             aria-label={ 'toggle-color-mode' }
-            onClick={ toggleColorMode }
+            onClick={ handleColorModeButtonClick }
             icon={ useColorModeValue(<MoonIcon />, <SunIcon />) }
           />
         </Tooltip>
