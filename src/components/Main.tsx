@@ -29,7 +29,7 @@ const Main = () => {
     setNotes(e.target.value)
   };
 
-  const handleCopyNotes: React.MouseEventHandler<HTMLButtonElement> = () => {
+  const handleCopyButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     if (notes) {
       onCopyNotes();
       createToast({
@@ -46,7 +46,7 @@ const Main = () => {
     }
   };
 
-  const handleDownloadNotes: React.MouseEventHandler<HTMLButtonElement> = () => {
+  const handleDownloadButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     if (notes) {
       onDownloadNotes();
       createToast({
@@ -90,8 +90,8 @@ const Main = () => {
       <Container maxW={ 'container.xl' } py={ 4 }>
         <Header 
           hasNotes={ !!notes }
-          handleCopyNotes={ handleCopyNotes }
-          handleDownloadNotes={ handleDownloadNotes }
+          handleCopyButtonClick={ handleCopyButtonClick }
+          handleDownloadButtonClick={ handleDownloadButtonClick }
           handleDeleteButtonClick={ handleDeleteButtonClick }
           toggleColorMode={ toggleColorMode }
         />

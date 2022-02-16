@@ -23,16 +23,16 @@ import {
 
 interface HeaderProps {
   hasNotes: boolean;
-  handleCopyNotes: React.MouseEventHandler<HTMLButtonElement>;
-  handleDownloadNotes: React.MouseEventHandler<HTMLButtonElement>;
+  handleCopyButtonClick: React.MouseEventHandler<HTMLButtonElement>;
+  handleDownloadButtonClick: React.MouseEventHandler<HTMLButtonElement>;
   handleDeleteButtonClick: React.MouseEventHandler<HTMLButtonElement>;
   toggleColorMode: () => void;
 }
 
 const Header = ({
   hasNotes,
-  handleCopyNotes,
-  handleDownloadNotes,
+  handleCopyButtonClick,
+  handleDownloadButtonClick,
   handleDeleteButtonClick,
   toggleColorMode
 }: HeaderProps) => {
@@ -50,13 +50,13 @@ const Header = ({
           <MenuList>
             <MenuItem
               icon={ <CopyIcon /> }
-              onClick={ handleCopyNotes }
+              onClick={ handleCopyButtonClick }
             >
               { 'copy notes' }
             </MenuItem>
             <MenuItem
               icon={ <DownloadIcon /> }
-              onClick={ handleDownloadNotes }
+              onClick={ handleDownloadButtonClick }
             >
               { 'download notes' }
             </MenuItem>
@@ -80,7 +80,7 @@ const Header = ({
           <IconButton
             isDisabled={ !hasNotes }
             aria-label={ 'copy-notes' }
-            onClick={ handleCopyNotes }
+            onClick={ handleCopyButtonClick }
             icon={ <CopyIcon /> }
           />
         </Tooltip>
@@ -88,7 +88,7 @@ const Header = ({
           <IconButton
             isDisabled={ !hasNotes }
             aria-label={ 'download-notes' }
-            onClick={ handleDownloadNotes }
+            onClick={ handleDownloadButtonClick }
             icon={ <DownloadIcon /> }
           />
         </Tooltip>
