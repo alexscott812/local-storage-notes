@@ -22,6 +22,7 @@ import {
 } from "@chakra-ui/react";
 
 interface HeaderProps {
+  hasNotes: boolean;
   handleCopyNotes: React.MouseEventHandler<HTMLButtonElement>;
   handleDownloadNotes: React.MouseEventHandler<HTMLButtonElement>;
   handleDeleteButtonClick: React.MouseEventHandler<HTMLButtonElement>;
@@ -29,6 +30,7 @@ interface HeaderProps {
 }
 
 const Header = ({
+  hasNotes,
   handleCopyNotes,
   handleDownloadNotes,
   handleDeleteButtonClick,
@@ -50,19 +52,19 @@ const Header = ({
               icon={ <CopyIcon /> }
               onClick={ handleCopyNotes }
             >
-              { 'copy' }
+              { 'copy notes' }
             </MenuItem>
             <MenuItem
               icon={ <DownloadIcon /> }
               onClick={ handleDownloadNotes }
             >
-              { 'download' }
+              { 'download notes' }
             </MenuItem>
             <MenuItem
-              icon={ <DownloadIcon /> }
+              icon={ <DeleteIcon /> }
               onClick={ handleDeleteButtonClick }
             >
-              { 'delete' }
+              { 'delete notes' }
             </MenuItem>
             <MenuItem
               icon={ useColorModeValue(<MoonIcon />, <SunIcon />) }
@@ -76,6 +78,7 @@ const Header = ({
       <HStack display={{ base: 'none', sm: 'flex' }}>
         <Tooltip hasArrow label={ 'copy notes' }>
           <IconButton
+            isDisabled={ !hasNotes }
             aria-label={ 'copy-notes' }
             onClick={ handleCopyNotes }
             icon={ <CopyIcon /> }
@@ -83,6 +86,7 @@ const Header = ({
         </Tooltip>
         <Tooltip hasArrow label={ 'download notes' }>
           <IconButton
+            isDisabled={ !hasNotes }
             aria-label={ 'download-notes' }
             onClick={ handleDownloadNotes }
             icon={ <DownloadIcon /> }
@@ -90,6 +94,7 @@ const Header = ({
         </Tooltip>
         <Tooltip hasArrow label={ 'delete notes' }>
           <IconButton
+            isDisabled={ !hasNotes }
             aria-label={ 'delete-notes' }
             onClick={ handleDeleteButtonClick }
             icon={ <DeleteIcon /> }

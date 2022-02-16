@@ -25,21 +25,23 @@ const Main = () => {
   const { onDownload: onDownloadNotes } = useDownloadTxt(notes);
   const createToast = useToast();
 
+  const handleNotesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNotes(e.target.value)
+  };
+
   const handleCopyNotes: React.MouseEventHandler<HTMLButtonElement> = () => {
     if (notes) {
       onCopyNotes();
       createToast({
         title: 'notes copied to clipboard!',
         status: 'success',
-        duration: 2500,
-        isClosable: true
+        duration: 2500
       });
     } else {
       createToast({
         title: 'no notes to copy!',
         status: 'warning',
-        duration: 2500,
-        isClosable: true
+        duration: 2500
       });
     }
   };
@@ -50,21 +52,15 @@ const Main = () => {
       createToast({
         title: 'notes downloaded!',
         status: 'success',
-        duration: 2500,
-        isClosable: true
+        duration: 2500
       });
     } else {
       createToast({
         title: 'no notes to download!',
         status: 'warning',
-        duration: 2500,
-        isClosable: true
+        duration: 2500
       });
     }
-  };
-
-  const handleNotesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setNotes(e.target.value)
   };
 
   const handleDeleteButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
@@ -74,8 +70,7 @@ const Main = () => {
       createToast({
         title: 'no notes to delete!',
         status: 'warning',
-        duration: 2500,
-        isClosable: true
+        duration: 2500
       });
     }
   };
@@ -86,8 +81,7 @@ const Main = () => {
     createToast({
       title: 'notes deleted!',
       status: 'success',
-      duration: 2500,
-      isClosable: true
+      duration: 2500
     });
   };
 
@@ -95,6 +89,7 @@ const Main = () => {
     <>
       <Container maxW={ 'container.xl' } py={ 4 }>
         <Header 
+          hasNotes={ !!notes }
           handleCopyNotes={ handleCopyNotes }
           handleDownloadNotes={ handleDownloadNotes }
           handleDeleteButtonClick={ handleDeleteButtonClick }
