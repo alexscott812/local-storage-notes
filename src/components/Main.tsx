@@ -9,8 +9,9 @@ import {
 } from "@chakra-ui/react";
 import useStateWithLocalStorage from "../hooks/use-state-with-local-storage";
 import useDownloadTxt from "../hooks/use-download-txt";
-import DeleteConfirmationModal from "./DeleteConfirmationModal";
 import Header from "./Header";
+import Notes from "./Notes";
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
 import AboutModal from "./AboutModal";
 
 const Main = () => {
@@ -104,6 +105,10 @@ const Main = () => {
           handleDeleteButtonClick={ handleDeleteButtonClick }
           handleColorModeButtonClick={ toggleColorMode }
           handleAboutButtonClick={ handleAboutButtonClick }
+        />
+        <Notes
+          notes={ notes }
+          onNotesChange={ handleNotesChange }
         />
         <Textarea
           variant={ 'filled' }

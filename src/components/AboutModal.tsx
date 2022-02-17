@@ -36,7 +36,7 @@ const AboutModal = ({
             { ' is a notepad web app with offline capabilities.' }
           </Text>
           <Text mb={ 2 }>{ 'features:' }</Text>
-          <UnorderedList mb={ 2 }>
+          <UnorderedList mb={ 4 }>
             <ListItem>{ `notes persisted to browser's local storage` }</ListItem>
             <ListItem>{ 'notes synced across multiple browser tabs' }</ListItem>
             <ListItem>{ 'copy and download notes capabilities' }</ListItem>

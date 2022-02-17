@@ -44,7 +44,7 @@ const Header = ({
       <Heading>{ 'notes-js' }</Heading>
       <Spacer />
       <Box d={{ base: 'flex', sm: 'none' }}>
-        <Menu>
+        <Menu computePositionOnMount>
           <MenuButton
             as={ IconButton }
             aria-label={ 'options' }
