@@ -10,7 +10,7 @@ import useStateWithLocalStorage from "../hooks/use-state-with-local-storage";
 import useDownloadTxt from "../hooks/use-download-txt";
 import Header from "../components/Header";
 import Notes from "../components/Notes";
-import DeleteConfirmationModal from "../components/DeleteConfirmationModal";
+import DeleteModal from "../components/DeleteModal";
 import AboutModal from "../components/AboutModal";
 
 const Main = () => {
@@ -18,9 +18,9 @@ const Main = () => {
   const [notes, setNotes] = useStateWithLocalStorage('notes');
   const { toggleColorMode } = useColorMode();
   const {
-    isOpen: isDeleteConfirmationModalOpen,
-    onOpen: onDeleteConfirmationModalOpen,
-    onClose: onDeleteConfirmationModalClose
+    isOpen: isDeleteModalOpen,
+    onOpen: onDeleteModalOpen,
+    onClose: onDeleteModalClose
   } = useDisclosure();
   const {
     isOpen: isAboutModalOpen,
@@ -71,7 +71,7 @@ const Main = () => {
 
   const handleDeleteButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     if (notes) {
-      onDeleteConfirmationModalOpen();
+      onDeleteModalOpen();
     } else {
       createToast({
         title: 'no notes to delete!',
@@ -86,7 +86,7 @@ const Main = () => {
 
   const handleDeleteNotes: React.MouseEventHandler<HTMLButtonElement> = () => {
     setNotes('');
-    onDeleteConfirmationModalClose();
+    onDeleteModalClose();
     createToast({
       title: 'notes deleted!',
       status: 'success',
@@ -110,9 +110,9 @@ const Main = () => {
           onNotesChange={ handleNotesChange }
         />
       </Container>
-      <DeleteConfirmationModal
-        isOpen={ isDeleteConfirmationModalOpen }
-        onClose={ onDeleteConfirmationModalClose }
+      <DeleteModal
+        isOpen={ isDeleteModalOpen }
+        onClose={ onDeleteModalClose }
         confirmDelete={ handleDeleteNotes }
       />
       <AboutModal

@@ -9,17 +9,17 @@ import {
   Button
 } from '@chakra-ui/react';
 
-interface DeleteConfirmationModalProps {
+interface DeleteModalProps {
   isOpen: boolean;
   onClose: () => void;
   confirmDelete: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const DeleteConfirmationModal = ({
+const DeleteModal = ({
   isOpen,
   onClose,
   confirmDelete
-}: DeleteConfirmationModalProps) => {
+}: DeleteModalProps) => {
 
   const cancelRef = useRef(null);
 
@@ -51,4 +51,4 @@ const DeleteConfirmationModal = ({
   )
 };
 
-export default DeleteConfirmationModal;
+export default DeleteModal;
