@@ -9,10 +9,10 @@ import {
 } from "@chakra-ui/react";
 import useStateWithLocalStorage from "../hooks/use-state-with-local-storage";
 import useDownloadTxt from "../hooks/use-download-txt";
-import Header from "./Header";
-import Notes from "./Notes";
-import DeleteConfirmationModal from "./DeleteConfirmationModal";
-import AboutModal from "./AboutModal";
+import Header from "../components/Header";
+import Notes from "../components/Notes";
+import DeleteConfirmationModal from "../components/DeleteConfirmationModal";
+import AboutModal from "../components/AboutModal";
 
 const Main = () => {
 
@@ -109,14 +109,6 @@ const Main = () => {
         <Notes
           notes={ notes }
           onNotesChange={ handleNotesChange }
-        />
-        <Textarea
-          variant={ 'filled' }
-          size={ 'lg' }
-          minH={ 'lg' }
-          value={ notes }
-          onChange={ handleNotesChange }
-          placeholder={ 'type your notes here...' }
         />
       </Container>
       <DeleteConfirmationModal
