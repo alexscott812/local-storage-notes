@@ -3,7 +3,8 @@ import {
   DownloadIcon,
   DeleteIcon,
   MoonIcon,
-  SunIcon
+  SunIcon,
+  InfoOutlineIcon
 } from "@chakra-ui/icons";
 import {
   Flex,
@@ -27,6 +28,7 @@ interface HeaderProps {
   handleDownloadButtonClick: React.MouseEventHandler<HTMLButtonElement>;
   handleDeleteButtonClick: React.MouseEventHandler<HTMLButtonElement>;
   handleColorModeButtonClick: () => void;
+  handleAboutButtonClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Header = ({
@@ -34,7 +36,8 @@ const Header = ({
   handleCopyButtonClick,
   handleDownloadButtonClick,
   handleDeleteButtonClick,
-  handleColorModeButtonClick
+  handleColorModeButtonClick,
+  handleAboutButtonClick
 }: HeaderProps) => {
   return (
     <Flex align={ 'center' } justify={ 'center' } mb={ 4 }>
@@ -72,6 +75,12 @@ const Header = ({
             >
               { `${useColorModeValue('dark', 'light')} mode` }
             </MenuItem>
+            <MenuItem
+              icon={ <InfoOutlineIcon /> }
+              onClick={ handleAboutButtonClick }
+            >
+              { 'about' }
+            </MenuItem>
           </MenuList>
         </Menu>
       </Box>
@@ -105,6 +114,13 @@ const Header = ({
             aria-label={ 'toggle-color-mode' }
             onClick={ handleColorModeButtonClick }
             icon={ useColorModeValue(<MoonIcon />, <SunIcon />) }
+          />
+        </Tooltip>
+        <Tooltip hasArrow label={ 'about' }>
+          <IconButton
+            aria-label={ 'about' }
+            onClick={ handleAboutButtonClick }
+            icon={ <InfoOutlineIcon /> }
           />
         </Tooltip>
       </HStack>

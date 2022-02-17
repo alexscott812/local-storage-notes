@@ -11,6 +11,7 @@ import useStateWithLocalStorage from "../hooks/use-state-with-local-storage";
 import useDownloadTxt from "../hooks/use-download-txt";
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
 import Header from "./Header";
+import AboutModal from "./AboutModal";
 
 const Main = () => {
 
@@ -20,6 +21,11 @@ const Main = () => {
     isOpen: isDeleteConfirmationModalOpen,
     onOpen: onDeleteConfirmationModalOpen,
     onClose: onDeleteConfirmationModalClose
+  } = useDisclosure();
+  const {
+    isOpen: isAboutModalOpen,
+    onOpen: onAboutModalOpen,
+    onClose: onAboutModalClose
   } = useDisclosure();
   const { onCopy: onCopyNotes } = useClipboard(notes);
   const { onDownload: onDownloadNotes } = useDownloadTxt(notes);
@@ -74,6 +80,9 @@ const Main = () => {
       });
     }
   };
+  const handleAboutButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
+    onAboutModalOpen();
+  };
 
   const handleDeleteNotes: React.MouseEventHandler<HTMLButtonElement> = () => {
     setNotes('');
@@ -94,6 +103,7 @@ const Main = () => {
           handleDownloadButtonClick={ handleDownloadButtonClick }
           handleDeleteButtonClick={ handleDeleteButtonClick }
           handleColorModeButtonClick={ toggleColorMode }
+          handleAboutButtonClick={ handleAboutButtonClick }
         />
         <Textarea
           variant={ 'filled' }
@@ -108,6 +118,10 @@ const Main = () => {
         isOpen={ isDeleteConfirmationModalOpen }
         onClose={ onDeleteConfirmationModalClose }
         confirmDelete={ handleDeleteNotes }
+      />
+      <AboutModal
+        isOpen={ isAboutModalOpen }
+        onClose={ onAboutModalClose }
       />
     </>
   );
