@@ -10,7 +10,6 @@ import {
   Flex,
   Heading,
   Spacer,
-  HStack,
   Tooltip,
   IconButton,
   Text,
@@ -19,7 +18,8 @@ import {
   MenuItem,
   MenuButton,
   MenuList,
-  useColorModeValue
+  useColorModeValue,
+  ButtonGroup
 } from "@chakra-ui/react";
 
 interface HeaderProps {
@@ -84,7 +84,7 @@ const Header = ({
           </MenuList>
         </Menu>
       </Box>
-      <HStack display={{ base: 'none', sm: 'flex' }}>
+      <ButtonGroup display={{ base: 'none', sm: 'flex' }}>
         <Tooltip hasArrow label={ 'copy notes' }>
           <IconButton
             isDisabled={ !hasNotes }
@@ -123,7 +123,7 @@ const Header = ({
             icon={ <InfoOutlineIcon /> }
           />
         </Tooltip>
-      </HStack>
+      </ButtonGroup>
     </Flex>
   );
 };

@@ -1,5 +1,4 @@
 import {
-  Box,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -13,7 +12,6 @@ import {
   UnorderedList,
   Link,
   useColorModeValue,
-  Tag,
   chakra
 } from '@chakra-ui/react';
 
