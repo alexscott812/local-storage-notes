@@ -1,4 +1,5 @@
 import {
+  Box,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -7,7 +8,13 @@ import {
   ModalCloseButton,
   ModalFooter,
   Button,
-  Text
+  Text,
+  ListItem,
+  UnorderedList,
+  Link,
+  useColorModeValue,
+  Tag,
+  chakra
 } from '@chakra-ui/react';
 
 interface AboutModalProps {
@@ -26,7 +33,29 @@ const AboutModal = ({
         <ModalHeader>{ 'about' }</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Text>{ 'about the project' }</Text>
+          <Text mb={ 2 }>
+            <chakra.span fontWeight={ 'semibold' }>{ 'notes-js' }</chakra.span>
+            { ' is a notepad web app with offline capabilities.' }
+          </Text>
+          <Text mb={ 2 }>{ 'features:' }</Text>
+          <UnorderedList mb={ 2 }>
+            <ListItem>{ `notes persisted to browser's local storage` }</ListItem>
+            <ListItem>{ 'notes synced across multiple browser tabs' }</ListItem>
+            <ListItem>{ 'copy and download notes capabilities' }</ListItem>
+            <ListItem>{ 'dark mode capability' }</ListItem>
+            <ListItem>{ 'open-source' }</ListItem>
+          </UnorderedList>
+          <Text align={ 'center' }>
+            { '🛠 made by ' }
+            <Link
+              color={ useColorModeValue('purple.500', 'purple.200') }
+              fontWeight={ 'semibold' }
+              href={ 'https://github.com/alexscott812' }
+              isExternal
+            >
+              { 'alex scott' }
+            </Link>
+          </Text>
         </ModalBody>
         <ModalFooter>
           <Button onClick={ onClose }>
