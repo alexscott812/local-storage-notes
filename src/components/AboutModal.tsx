@@ -39,8 +39,8 @@ const AboutModal = ({
           <UnorderedList mb={ 4 }>
             <ListItem>{ `notes persisted to browser's local storage` }</ListItem>
             <ListItem>{ 'notes synced across multiple browser tabs' }</ListItem>
-            <ListItem>{ 'copy and download notes capabilities' }</ListItem>
-            <ListItem>{ 'dark mode capability' }</ListItem>
+            <ListItem>{ 'copy and download notes' }</ListItem>
+            <ListItem>{ 'dark mode support' }</ListItem>
             <ListItem>{ 'open-source' }</ListItem>
           </UnorderedList>
           <Text align={ 'center' }>
