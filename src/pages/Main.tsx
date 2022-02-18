@@ -4,7 +4,9 @@ import {
   useColorMode,
   useDisclosure,
   useClipboard,
-  useToast
+  useToast,
+  VStack,
+  Box
 } from "@chakra-ui/react";
 import useStateWithLocalStorage from "../hooks/use-state-with-local-storage";
 import useDownloadTxt from "../hooks/use-download-txt";
@@ -96,19 +98,23 @@ const Main = () => {
 
   return (
     <>
-      <Container maxW={ 'container.lg' } py={ 4 }>
-        <Header 
-          hasNotes={ !!notes }
-          handleCopyButtonClick={ handleCopyButtonClick }
-          handleDownloadButtonClick={ handleDownloadButtonClick }
-          handleDeleteButtonClick={ handleDeleteButtonClick }
-          handleColorModeButtonClick={ toggleColorMode }
-          handleAboutButtonClick={ handleAboutButtonClick }
-        />
-        <Notes
-          notes={ notes }
-          onNotesChange={ handleNotesChange }
-        />
+      <Container maxW={ 'container.lg' } py={ 4 } h={ '100vh' }>
+        <VStack align={ 'strech' } h={ 'full' } spacing={ 4 }>
+          <Header 
+            hasNotes={ !!notes }
+            handleCopyButtonClick={ handleCopyButtonClick }
+            handleDownloadButtonClick={ handleDownloadButtonClick }
+            handleDeleteButtonClick={ handleDeleteButtonClick }
+            handleColorModeButtonClick={ toggleColorMode }
+            handleAboutButtonClick={ handleAboutButtonClick }
+          />
+          <Box flex={ 1 }>
+            <Notes
+              notes={ notes }
+              onNotesChange={ handleNotesChange }
+            />
+          </Box>
+        </VStack>
       </Container>
       <DeleteModal
         isOpen={ isDeleteModalOpen }

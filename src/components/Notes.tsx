@@ -12,8 +12,9 @@ const Notes = ({
   return (
     <Textarea
       variant={ 'filled' }
-      size={ 'lg' }
-      minH={ 'lg' }
+      h={ 'full' }
+      // size={ 'lg' }
+      // minH={ 'full' }
       value={ notes }
       onChange={ onNotesChange }
       placeholder={ 'type your notes here...' }

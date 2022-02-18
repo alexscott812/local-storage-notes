@@ -40,7 +40,7 @@ const Header = ({
   handleAboutButtonClick
 }: HeaderProps) => {
   return (
-    <Flex align={ 'center' } justify={ 'center' } mb={ 4 }>
+    <Flex align={ 'center' } justify={ 'center' }>
       <Heading>{ 'notes-js' }</Heading>
       <Spacer />
       <Box d={{ base: 'flex', sm: 'none' }}>
