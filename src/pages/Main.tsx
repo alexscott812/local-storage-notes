@@ -96,7 +96,7 @@ const Main = () => {
 
   return (
     <>
-      <Container maxW={ 'container.xl' } py={ 4 }>
+      <Container maxW={ 'container.lg' } py={ 4 }>
         <Header 
           hasNotes={ !!notes }
           handleCopyButtonClick={ handleCopyButtonClick }
