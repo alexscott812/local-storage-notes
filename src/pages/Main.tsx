@@ -38,49 +38,25 @@ const Main = () => {
   };
 
   const handleCopyButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
-    if (notes) {
-      onCopyNotes();
-      createToast({
-        title: 'notes copied to clipboard!',
-        status: 'success',
-        duration: 2500
-      });
-    } else {
-      createToast({
-        title: 'no notes to copy!',
-        status: 'warning',
-        duration: 2500
-      });
-    }
+    onCopyNotes();
+    createToast({
+      title: 'notes copied to clipboard!',
+      status: 'success',
+      duration: 2500
+    });
   };
 
   const handleDownloadButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
-    if (notes) {
-      onDownloadNotes();
-      createToast({
-        title: 'notes downloaded!',
-        status: 'success',
-        duration: 2500
-      });
-    } else {
-      createToast({
-        title: 'no notes to download!',
-        status: 'warning',
-        duration: 2500
-      });
-    }
+    onDownloadNotes();
+    createToast({
+      title: 'notes downloaded!',
+      status: 'success',
+      duration: 2500
+    });
   };
 
   const handleDeleteButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
-    if (notes) {
-      onDeleteModalOpen();
-    } else {
-      createToast({
-        title: 'no notes to delete!',
-        status: 'warning',
-        duration: 2500
-      });
-    }
+    onDeleteModalOpen();
   };
   const handleAboutButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     onAboutModalOpen();
