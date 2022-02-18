@@ -52,18 +52,21 @@ const Header = ({
           />
           <MenuList>
             <MenuItem
+              isDisabled={ !hasNotes }
               icon={ <CopyIcon /> }
               onClick={ handleCopyButtonClick }
             >
               { 'copy notes' }
             </MenuItem>
             <MenuItem
+              isDisabled={ !hasNotes }
               icon={ <DownloadIcon /> }
               onClick={ handleDownloadButtonClick }
             >
               { 'download notes' }
             </MenuItem>
             <MenuItem
+              isDisabled={ !hasNotes }
               icon={ <DeleteIcon /> }
               onClick={ handleDeleteButtonClick }
             >
