@@ -75,7 +75,7 @@ const Main = () => {
   return (
     <>
       <Container maxW={ 'container.lg' } py={ 4 } h={ '100vh' }>
-        <VStack align={ 'strech' } h={ 'full' } spacing={ 4 }>
+        <VStack align={ 'stretch' } h={ 'full' } spacing={ 4 }>
           <Header 
             hasNotes={ !!notes }
             handleCopyButtonClick={ handleCopyButtonClick }
