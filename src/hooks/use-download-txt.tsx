@@ -3,7 +3,6 @@ import { useCallback } from "react";
 const useDownloadTxt = ( text: string ) => {
 
   const onDownload = useCallback((): void => {
-    console.log(`downloading: ${text}`);
     const element = document.createElement("a");
     const file = new Blob([text], {type: 'text/plain'});
     element.href = URL.createObjectURL(file);
