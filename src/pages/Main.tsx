@@ -31,7 +31,7 @@ const Main = () => {
   } = useDisclosure();
   const { onCopy: onCopyNotes } = useClipboard(notes);
   const { onDownload: onDownloadNotes } = useDownloadTxt(notes);
-  const createToast = useToast();
+  const toast = useToast();
 
   const handleNotesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setNotes(e.target.value)
@@ -39,20 +39,28 @@ const Main = () => {
 
   const handleCopyButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     onCopyNotes();
-    createToast({
-      title: 'notes copied to clipboard!',
-      status: 'success',
-      duration: 2500
-    });
+    const toastId = 'notes-copied';
+    if (!toast.isActive(toastId)) {
+      toast({
+        id: toastId,
+        title: 'notes copied to clipboard!',
+        status: 'success',
+        duration: 2500
+      });
+    }
   };
 
   const handleDownloadButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     onDownloadNotes();
-    createToast({
-      title: 'notes downloaded!',
-      status: 'success',
-      duration: 2500
-    });
+    const toastId = 'notes-downloaded';
+    if (!toast.isActive(toastId)) {
+      toast({
+        id: toastId,
+        title: 'notes downloaded!',
+        status: 'success',
+        duration: 2500
+      });
+    }
   };
 
   const handleDeleteButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
@@ -65,11 +73,15 @@ const Main = () => {
   const handleDeleteNotes: React.MouseEventHandler<HTMLButtonElement> = () => {
     setNotes('');
     onDeleteModalClose();
-    createToast({
-      title: 'notes deleted!',
-      status: 'success',
-      duration: 2500
-    });
+    const toastId = 'notes-deleted';
+    if (!toast.isActive(toastId)) {
+      toast({
+        id: toastId,
+        title: 'notes deleted!',
+        status: 'success',
+        duration: 2500
+      });
+    }
   };
 
   return (
