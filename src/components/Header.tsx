@@ -45,11 +45,13 @@ const Header = ({
       <Spacer />
       <Box d={{ base: 'flex', sm: 'none' }}>
         <Menu computePositionOnMount>
-          <MenuButton
-            as={ IconButton }
-            aria-label={ 'options' }
-            icon={ <Text fontWeight={ 'bold' }>{ '···' }</Text> }
-          />
+          <Tooltip hasArrow label={ 'options' }>
+            <MenuButton
+              as={ IconButton }
+              aria-label={ 'options' }
+              icon={ <Text fontWeight={ 'bold' }>{ '···' }</Text> }
+            />
+          </Tooltip>
           <MenuList>
             <MenuItem
               isDisabled={ !hasNotes }
