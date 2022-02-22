@@ -24,20 +24,20 @@ import {
 
 interface HeaderProps {
   hasNotes: boolean;
-  handleCopyButtonClick: React.MouseEventHandler<HTMLButtonElement>;
-  handleDownloadButtonClick: React.MouseEventHandler<HTMLButtonElement>;
-  handleDeleteButtonClick: React.MouseEventHandler<HTMLButtonElement>;
-  handleColorModeButtonClick: () => void;
-  handleAboutButtonClick: React.MouseEventHandler<HTMLButtonElement>;
+  onCopyButtonClick: React.MouseEventHandler<HTMLButtonElement>;
+  onDownloadButtonClick: React.MouseEventHandler<HTMLButtonElement>;
+  onDeleteButtonClick: React.MouseEventHandler<HTMLButtonElement>;
+  onColorModeButtonClick: () => void;
+  onAboutButtonClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Header = ({
   hasNotes,
-  handleCopyButtonClick,
-  handleDownloadButtonClick,
-  handleDeleteButtonClick,
-  handleColorModeButtonClick,
-  handleAboutButtonClick
+  onCopyButtonClick,
+  onDownloadButtonClick,
+  onDeleteButtonClick,
+  onColorModeButtonClick,
+  onAboutButtonClick
 }: HeaderProps) => {
   return (
     <Flex align={ 'center' } justify={ 'center' }>
@@ -56,33 +56,33 @@ const Header = ({
             <MenuItem
               isDisabled={ !hasNotes }
               icon={ <CopyIcon /> }
-              onClick={ handleCopyButtonClick }
+              onClick={ onCopyButtonClick }
             >
               { 'copy notes' }
             </MenuItem>
             <MenuItem
               isDisabled={ !hasNotes }
               icon={ <DownloadIcon /> }
-              onClick={ handleDownloadButtonClick }
+              onClick={ onDownloadButtonClick }
             >
               { 'download notes' }
             </MenuItem>
             <MenuItem
               isDisabled={ !hasNotes }
               icon={ <DeleteIcon /> }
-              onClick={ handleDeleteButtonClick }
+              onClick={ onDeleteButtonClick }
             >
               { 'delete notes' }
             </MenuItem>
             <MenuItem
               icon={ useColorModeValue(<MoonIcon />, <SunIcon />) }
-              onClick={ handleColorModeButtonClick }
+              onClick={ onColorModeButtonClick }
             >
               { `${useColorModeValue('dark', 'light')} mode` }
             </MenuItem>
             <MenuItem
               icon={ <InfoOutlineIcon /> }
-              onClick={ handleAboutButtonClick }
+              onClick={ onAboutButtonClick }
             >
               { 'about' }
             </MenuItem>
@@ -94,7 +94,7 @@ const Header = ({
           <IconButton
             isDisabled={ !hasNotes }
             aria-label={ 'copy-notes' }
-            onClick={ handleCopyButtonClick }
+            onClick={ onCopyButtonClick }
             icon={ <CopyIcon /> }
           />
         </Tooltip>
@@ -102,7 +102,7 @@ const Header = ({
           <IconButton
             isDisabled={ !hasNotes }
             aria-label={ 'download-notes' }
-            onClick={ handleDownloadButtonClick }
+            onClick={ onDownloadButtonClick }
             icon={ <DownloadIcon /> }
           />
         </Tooltip>
@@ -110,21 +110,21 @@ const Header = ({
           <IconButton
             isDisabled={ !hasNotes }
             aria-label={ 'delete-notes' }
-            onClick={ handleDeleteButtonClick }
+            onClick={ onDeleteButtonClick }
             icon={ <DeleteIcon /> }
           />
         </Tooltip>
         <Tooltip hasArrow label={ `${useColorModeValue('dark', 'light')} mode` }>
           <IconButton
             aria-label={ 'toggle-color-mode' }
-            onClick={ handleColorModeButtonClick }
+            onClick={ onColorModeButtonClick }
             icon={ useColorModeValue(<MoonIcon />, <SunIcon />) }
           />
         </Tooltip>
         <Tooltip hasArrow label={ 'about' }>
           <IconButton
             aria-label={ 'about' }
-            onClick={ handleAboutButtonClick }
+            onClick={ onAboutButtonClick }
             icon={ <InfoOutlineIcon /> }
           />
         </Tooltip>

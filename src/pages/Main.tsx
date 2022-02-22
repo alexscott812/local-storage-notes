@@ -90,11 +90,11 @@ const Main = () => {
         <VStack align={ 'stretch' } h={ 'full' } spacing={ 4 }>
           <Header 
             hasNotes={ !!notes }
-            handleCopyButtonClick={ handleCopyButtonClick }
-            handleDownloadButtonClick={ handleDownloadButtonClick }
-            handleDeleteButtonClick={ handleDeleteButtonClick }
-            handleColorModeButtonClick={ toggleColorMode }
-            handleAboutButtonClick={ handleAboutButtonClick }
+            onCopyButtonClick={ handleCopyButtonClick }
+            onDownloadButtonClick={ handleDownloadButtonClick }
+            onDeleteButtonClick={ handleDeleteButtonClick }
+            onColorModeButtonClick={ toggleColorMode }
+            onAboutButtonClick={ handleAboutButtonClick }
           />
           <Box flex={ 1 }>
             <Notes
@@ -107,7 +107,7 @@ const Main = () => {
       <DeleteModal
         isOpen={ isDeleteModalOpen }
         onClose={ onDeleteModalClose }
-        confirmDelete={ handleDeleteNotes }
+        onConfirmDelete={ handleDeleteNotes }
       />
       <AboutModal
         isOpen={ isAboutModalOpen }

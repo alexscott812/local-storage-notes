@@ -12,13 +12,13 @@ import {
 interface DeleteModalProps {
   isOpen: boolean;
   onClose: () => void;
-  confirmDelete: React.MouseEventHandler<HTMLButtonElement>;
+  onConfirmDelete: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const DeleteModal = ({
   isOpen,
   onClose,
-  confirmDelete
+  onConfirmDelete
 }: DeleteModalProps) => {
 
   const cancelRef = useRef(null);
@@ -41,7 +41,7 @@ const DeleteModal = ({
             <Button ref={ cancelRef } onClick={ onClose }>
               { 'cancel' }
             </Button>
-            <Button colorScheme={ 'red' } onClick={ confirmDelete } ml={ 3 }>
+            <Button colorScheme={ 'red' } onClick={ onConfirmDelete } ml={ 3 }>
               { 'delete' }
             </Button>
           </AlertDialogFooter>
