@@ -42,8 +42,11 @@ const AboutModal = ({
             <ListItem>{ 'copy and download notes' }</ListItem>
             <ListItem>{ 'dark mode support' }</ListItem>
             <ListItem>
-              <Link href={ 'https://github.com/alexscott812/notes-js' } isExternal>
-              { 'open-source' }
+              <Link 
+                href={ 'https://github.com/alexscott812/notes-js' }
+                isExternal
+              >
+                { 'open-source' }
               </Link>
             </ListItem>
           </UnorderedList>
