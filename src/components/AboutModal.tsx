@@ -41,7 +41,11 @@ const AboutModal = ({
             <ListItem>{ 'notes synced across multiple browser tabs' }</ListItem>
             <ListItem>{ 'copy and download notes' }</ListItem>
             <ListItem>{ 'dark mode support' }</ListItem>
-            <ListItem>{ 'open-source' }</ListItem>
+            <ListItem>
+              <Link href={ 'https://github.com/alexscott812/notes-js' } isExternal>
+              { 'open-source' }
+              </Link>
+            </ListItem>
           </UnorderedList>
           <Text align={ 'center' }>
             { '🛠 made by ' }
