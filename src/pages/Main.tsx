@@ -86,32 +86,32 @@ const Main = () => {
 
   return (
     <>
-      <Container maxW={ 'container.lg' } py={ 4 } h={ '100vh' }>
-        <VStack align={ 'stretch' } h={ 'full' } spacing={ 4 }>
+      <Container maxW={'container.lg'} py={4} h={'100vh'}>
+        <VStack align={'stretch'} h={'full'} spacing={4}>
           <Header 
-            hasNotes={ !!notes }
-            onCopyButtonClick={ handleCopyButtonClick }
-            onDownloadButtonClick={ handleDownloadButtonClick }
-            onDeleteButtonClick={ handleDeleteButtonClick }
-            onColorModeButtonClick={ toggleColorMode }
-            onAboutButtonClick={ handleAboutButtonClick }
+            hasNotes={!!notes}
+            onCopyButtonClick={handleCopyButtonClick}
+            onDownloadButtonClick={handleDownloadButtonClick}
+            onDeleteButtonClick={handleDeleteButtonClick}
+            onColorModeButtonClick={toggleColorMode}
+            onAboutButtonClick={handleAboutButtonClick}
           />
-          <Box flex={ 1 }>
+          <Box flex={1}>
             <Notes
-              notes={ notes }
-              onNotesChange={ handleNotesChange }
+              notes={notes}
+              onNotesChange={handleNotesChange}
             />
           </Box>
         </VStack>
       </Container>
       <DeleteModal
-        isOpen={ isDeleteModalOpen }
-        onClose={ onDeleteModalClose }
-        onConfirmDelete={ handleDeleteNotes }
+        isOpen={isDeleteModalOpen}
+        onClose={onDeleteModalClose}
+        onConfirmDelete={handleDeleteNotes}
       />
       <AboutModal
-        isOpen={ isAboutModalOpen }
-        onClose={ onAboutModalClose }
+        isOpen={isAboutModalOpen}
+        onClose={onAboutModalClose}
       />
     </>
   );

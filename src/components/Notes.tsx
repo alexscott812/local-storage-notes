@@ -11,13 +11,11 @@ const Notes = ({
 }: NotesProps) => {
   return (
     <Textarea
-      variant={ 'filled' }
-      h={ 'full' }
-      // size={ 'lg' }
-      // minH={ 'full' }
-      value={ notes }
-      onChange={ onNotesChange }
-      placeholder={ 'type your notes here...' }
+      variant={'filled'}
+      h={'full'}
+      value={notes}
+      onChange={onNotesChange}
+      placeholder={'type your notes here...'}
     />
   );
 };

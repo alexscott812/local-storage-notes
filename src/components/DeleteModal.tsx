@@ -25,24 +25,24 @@ const DeleteModal = ({
 
   return (
     <AlertDialog
-      isOpen={ isOpen }
-      leastDestructiveRef={ cancelRef }
-      onClose={ onClose }
+      isOpen={isOpen}
+      leastDestructiveRef={cancelRef}
+      onClose={onClose}
     >
       <AlertDialogOverlay>
         <AlertDialogContent>
-          <AlertDialogHeader fontSize={ 'lg' } fontWeight={ 'bold' }>
-            { 'delete notes' }
+          <AlertDialogHeader fontSize={'lg'} fontWeight={'bold'}>
+            {'delete notes'}
           </AlertDialogHeader>
           <AlertDialogBody>
-            { 'are you sure you want to delete all of your notes?' }
+            {'are you sure you want to delete all of your notes?'}
           </AlertDialogBody>
           <AlertDialogFooter>
-            <Button ref={ cancelRef } onClick={ onClose }>
-              { 'cancel' }
+            <Button ref={cancelRef} onClick={onClose}>
+              {'cancel'}
             </Button>
-            <Button colorScheme={ 'red' } onClick={ onConfirmDelete } ml={ 3 }>
-              { 'delete' }
+            <Button colorScheme={'red'} onClick={onConfirmDelete} ml={3}>
+              {'delete'}
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
