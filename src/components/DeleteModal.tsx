@@ -20,7 +20,6 @@ const DeleteModal = ({
   onClose,
   onConfirmDelete
 }: DeleteModalProps) => {
-
   const cancelRef = useRef(null);
 
   return (
@@ -31,18 +30,18 @@ const DeleteModal = ({
     >
       <AlertDialogOverlay>
         <AlertDialogContent>
-          <AlertDialogHeader fontSize={'lg'} fontWeight={'bold'}>
-            {'delete notes'}
+          <AlertDialogHeader fontSize="lg" fontWeight="bold">
+            delete notes
           </AlertDialogHeader>
           <AlertDialogBody>
-            {'are you sure you want to delete all of your notes?'}
+            are you sure you want to delete all of your notes?
           </AlertDialogBody>
           <AlertDialogFooter>
             <Button ref={cancelRef} onClick={onClose}>
-              {'cancel'}
+              cancel
             </Button>
-            <Button colorScheme={'red'} onClick={onConfirmDelete} ml={3}>
-              {'delete'}
+            <Button colorScheme="red" onClick={onConfirmDelete} ml={3}>
+              delete
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>

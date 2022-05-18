@@ -28,43 +28,43 @@ const AboutModal = ({
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>{'about'}</ModalHeader>
+        <ModalHeader>about</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Text mb={2}>
-            <chakra.span fontWeight={'semibold'}>{'notes-js'}</chakra.span>
-            {' is a notepad web app with offline capabilities.'}
+            <chakra.span fontWeight="semibold">notes-js</chakra.span>
+            &nbsp;is a notepad web app with offline capabilities.
           </Text>
-          <Text mb={2}>{'features:'}</Text>
+          <Text mb={2}>features:</Text>
           <UnorderedList mb={4}>
-            <ListItem>{`notes persisted to browser's local storage`}</ListItem>
-            <ListItem>{'notes synced across multiple browser tabs'}</ListItem>
-            <ListItem>{'copy and download notes'}</ListItem>
-            <ListItem>{'dark mode support'}</ListItem>
+            <ListItem>notes persisted to browser's local storage</ListItem>
+            <ListItem>notes synced across multiple browser tabs</ListItem>
+            <ListItem>copy and download notes</ListItem>
+            <ListItem>dark mode support</ListItem>
             <ListItem>
               <Link 
-                href={'https://github.com/alexscott812/notes-js'}
+                href="https://github.com/alexscott812/notes-js"
                 isExternal
               >
-                {'open-source'}
+                open-source
               </Link>
             </ListItem>
           </UnorderedList>
-          <Text align={'center'}>
-            {'🛠 made by '}
+          <Text align="center">
+            🛠 made by&nbsp;
             <Link
               color={useColorModeValue('purple.500', 'purple.200')}
-              fontWeight={'semibold'}
-              href={'https://github.com/alexscott812'}
+              fontWeight="semibold"
+              href="https://github.com/alexscott812"
               isExternal
             >
-              {'alex scott'}
+              alex scott
             </Link>
           </Text>
         </ModalBody>
         <ModalFooter>
           <Button onClick={onClose}>
-            {'close'}
+            close
           </Button>
         </ModalFooter>
       </ModalContent>

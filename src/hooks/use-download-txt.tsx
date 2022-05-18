@@ -1,7 +1,6 @@
 import { useCallback } from "react";
 
-const useDownloadTxt = ( text: string ) => {
-
+const useDownloadTxt = (text: string) => {
   const onDownload = useCallback((): void => {
     const element = document.createElement("a");
     const file = new Blob([text], {type: 'text/plain'});

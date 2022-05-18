@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 
-const useStateWithLocalStorage = ( key: string ) => {
-
+const useStateWithLocalStorage = (key: string) => {
   const [value, setValue] = useState<string>(() => {
     try {
       const item = window.localStorage.getItem(key);
@@ -13,7 +12,7 @@ const useStateWithLocalStorage = ( key: string ) => {
   });
 
   useEffect(() => {
-    const onLocalStorageChange = ( e: StorageEvent ) => {
+    const onLocalStorageChange = (e: StorageEvent) => {
       if (
         (e.storageArea === localStorage) &&
         (e.key === key) &&
@@ -28,7 +27,7 @@ const useStateWithLocalStorage = ( key: string ) => {
     }
   }, [key]);
 
-  const setPersistedValue = useCallback(( newState: string ) => {
+  const setPersistedValue = useCallback((newState: string) => {
     try {
       localStorage.setItem(key, newState);
     } catch (error) {
